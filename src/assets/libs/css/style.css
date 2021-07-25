@@ -156,14 +156,14 @@
    ========================================================================== */
 
 body {
-    font-family: 'Circular Std Book';
+    font-family: 'Circular Std Book' !important;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
     color: #71748d;
     background-color: #efeff6;
     -webkit-font-smoothing: antialiased;
-    src: local('MyFont'), url(https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200&display=swap) format('woff');
+    src: local('MyFont'), url('https://fonts.googleapis.com/css2?family=Zen+Loop&display=swap') format('woff');
 }
 
 h1,

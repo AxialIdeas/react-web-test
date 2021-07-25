@@ -1,13 +1,11 @@
 import { useState } from 'react';
-import './assets/vendor/bootstrap/css/bootstrap.min.css';
-import './assets/libs/css/style.css';
-import './App.css';
+import { Redirect } from 'react-router-dom';
 import utility from './assets/scripts/common';
 import Loader from './components/Loader';
 
 function App() {
-  const isValid = false;
   const [email, setEmail] = useState('');
+  const [redirect, setRedirect] = useState(false)
   const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState(false);
@@ -23,8 +21,8 @@ if (emailError && utility.ValidateEmail(email)) {
   setEmailError(false);
 }
 if (email === "test@gmail.com" && password === "12345") {
-  isValid = true;
   console.log("Credentials Correct")
+  setRedirect(true);
 }
 console.log(`Username = ${email} and Password = ${password}`);
 setLoading(false);
@@ -32,6 +30,7 @@ setLoading(false);
 
   };
   return (
+    redirect ? <Redirect to="/home"/> :
     <div className="card">
       <div className="card-header">
         <h3 className="card-header">Complain Mangement System</h3>
