@@ -3,15 +3,19 @@ import './assets/vendor/bootstrap/css/bootstrap.min.css';
 import './assets/libs/css/style.css';
 import './App.css';
 import utility from './assets/scripts/common';
+import Loader from './components/Loader';
 
 function App() {
   const isValid = false;
   const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState(false);
 
-  const login = () => {
-//var email = document.getElementsByName("username")[0].value;
+  const login = async () => {
+    setLoading(true);
+    await setTimeout(async () => {
+      //var email = document.getElementsByName("username")[0].value;
 if (!emailError && (email || !utility.ValidateEmail(email))) {
   setEmailError(true);
 }
@@ -23,14 +27,18 @@ if (email === "test@gmail.com" && password === "12345") {
   console.log("Credentials Correct")
 }
 console.log(`Username = ${email} and Password = ${password}`);
+setLoading(false);
+    },1000)
+
   };
   return (
     <div className="card">
       <div className="card-header">
         <h3 className="card-header">Complain Mangement System</h3>
         <h2 className="splash-description"> by Axial Ideas</h2>
-      </div>
-      <div className="card-body">
+      </div> 
+      <div className="card-body"> 
+      {loading ? <Loader /> : null}
         <form>
           <div className="form-group">
             <input value={email} onChange={(e) => setEmail(e.target.value)}
