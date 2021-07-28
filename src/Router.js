@@ -6,7 +6,8 @@ import {
   Link
 } from "react-router-dom";
 import App from "./App";
-import HomeCovid from "./components/HomeCovid";
+import Home from "./components/Home";
+import Login from "./components/Login";
 
 
 export default function () {
@@ -16,10 +17,10 @@ export default function () {
               renders the first one that matches the current URL. */}
           <Switch>
             <Route exact={true} path="/">
-              <App />
+              <Login/>
             </Route>
             <Route path="/home">
-              <HomeCovid />
+              <Home />
             </Route>
           </Switch>
       </Router>
