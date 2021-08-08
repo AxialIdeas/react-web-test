@@ -1,13 +1,14 @@
 import SideMenuFooter from './SideMenuFooter';
 import UserInfoBox from './UserInfoBox';
 
-export default function App() {
+export default function App(props) {
+    debugger;
     return (
         <section>
             {/* Left Sidebar */}
             <aside id="leftsidebar" className="sidebar">
                 {/* User Info */}
-                <UserInfoBox />
+                <UserInfoBox {...props} />
                 {/* #User Info */}
                 {/* Menu */}
                 <div className="menu">

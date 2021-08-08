@@ -1,6 +1,7 @@
 import { useState, Component, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import utility from '../assets/scripts/common';
+import TextBox from './GeneralComponents/Input';
 import Loader from './Loader';
 
 function App() {
@@ -23,10 +24,7 @@ function App() {
       var bodyElem = document.getElementById("root-body");
       bodyElem.classList.remove("login-page");
     }
- });
- dispatchEvent(() => {
-    state = undefined;
- })
+ },[state]);
   const login = async () => {
     if(email === "" && password === ""){
       setEmailError(true);
@@ -92,31 +90,31 @@ function App() {
                 <span className="input-group-addon">
                   <i className="material-icons">person</i>
                 </span>
-                <div className={emailError ? "form-line error focused" : "form-line"}>
-                  <input value={email} onChange={(e) => setEmail(e.target.value)}
-                    type="text" className="form-control" name="username" placeholder="Username" required autoFocus />
-                </div>
-                {emailError ? <label id="username-error" className="error" htmlFor="username">{errorMessage}</label> : ""}
-
+                <TextBox inputFormClass = {emailError ? "form-line error focused" : "form-line"} 
+                inputName = "username" inputIsRequired = {true} inputPlaceholder = "Username" inputErrorClass = "error"
+                inputType = "text" inputValue = {email} inputOnChange = {(e) => setEmail(e.target.value)}
+                inputErrorMessage = {errorMessage} inputError = {emailError}/>
               </div>
               <div className="input-group">
                 <span className="input-group-addon">
                   <i className="material-icons">lock</i>
                 </span>
-                <div className={passwordError ? "form-line error focused" : "form-line"}>
-                  <input value={password} onChange={(e) => setPassword(e.target.value)}
-                    type="password" className="form-control" name="password" placeholder="Password" required />
-                </div>
-                {passwordError ? <label id="password-error" className="error" htmlFor="password">{errorMessage}</label> : ""}
+                <TextBox inputFormClass = {passwordError ? "form-line error focused" : "form-line"} 
+                inputName = "password" inputIsRequired = {true} inputPlaceholder = "Password" inputErrorClass = "error"
+                inputType = "password" inputValue = {password} inputOnChange = {(e) => setPassword(e.target.value)}
+                inputErrorMessage = {errorMessage} inputError = {passwordError}/>                
               </div>
               <div className="row input-group">
                   {Error ?
                     <label className="error" style={{textAlign : 'center',fontWeight: 'bolder'}} >{errorMessage}</label>
                     : ""}
-                <div className="col-xs-8 p-t-5">
+                    <TextBox inputFormClass = "col-xs-8 p-t-5" 
+                inputName = "rememberme" inputIsRequired = {false}
+                inputType = "checkbox" inputErrorMessage = "Remember Me" inputError = {false}/>  
+                {/* <div className="col-xs-8 p-t-5">
                   <input type="checkbox" name="rememberme" id="rememberme" className="filled-in chk-col-pink" />
                   <label htmlFor="rememberme">Remember Me</label>
-                </div>
+                </div> */}
                 <div className="col-xs-4">
                   <button className="btn btn-block bg-pink waves-effect" onClick={login} type="button">SIGN IN</button>
                 </div>

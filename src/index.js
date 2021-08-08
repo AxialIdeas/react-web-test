@@ -4,9 +4,29 @@ import reportWebVitals from './reportWebVitals';
 import Router from './Router';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Router/>
-  </React.StrictMode>,
+    <React.StrictMode>
+        <React.Fragment>
+        {/* Page Loader */}
+        <div id="loader" className="page-loader-wrapper">
+            <div className="loader">
+                <div className="preloader">
+                    <div className="spinner-layer pl-red">
+                        <div className="circle-clipper left">
+                            <div className="circle" />
+                        </div>
+                        <div className="circle-clipper right">
+                            <div className="circle" />
+                        </div>
+                    </div>
+                </div>
+                <p>Please wait...</p>
+            </div>
+        </div>
+        {/* #END# Page Loader */}
+
+        <Router />
+        </React.Fragment>
+    </React.StrictMode>,
   document.getElementById('root-body')
 );
 
